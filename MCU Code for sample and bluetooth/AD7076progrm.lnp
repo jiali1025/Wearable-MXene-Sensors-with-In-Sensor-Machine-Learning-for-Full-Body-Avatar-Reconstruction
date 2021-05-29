@@ -1,0 +1,5 @@
+"AD7076.obj",
+"main.obj",
+"other.obj" 
+TO "AD7076progrm" 
+RAMSIZE(256) 

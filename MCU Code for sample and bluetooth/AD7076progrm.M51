@@ -1,0 +1,371 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/22/2020  17:18:55  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+G:\51\C51\BIN\BL51.EXE AD7076.obj, main.obj, other.obj TO AD7076progrm RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  AD7076.obj (AD7076)
+  main.obj (MAIN)
+  other.obj (OTHER)
+  G:\51\C51\LIB\C51S.LIB (?C_STARTUP)
+  G:\51\C51\LIB\C51S.LIB (?C?CLDPTR)
+  G:\51\C51\LIB\C51S.LIB (?C?CLDOPTR)
+  G:\51\C51\LIB\C51S.LIB (?C?CSTPTR)
+  G:\51\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  AD7076progrm (AD7076)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0015H     UNIT         _DATA_GROUP_
+            DATA    001DH     000AH     UNIT         ?DT?MAIN
+            IDATA   0027H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     007DH     INBLOCK      ?PR?MAIN?MAIN
+            CODE    010CH     0058H     UNIT         ?C?LIB_CODE
+            CODE    0164H     0042H     INBLOCK      ?PR?_AD7606_SETOS?AD7076
+            CODE    01A6H     0025H     INBLOCK      ?PR?AD7606_READ_DATA?AD7076
+            CODE    01CBH     001AH     INBLOCK      ?PR?_DELAY_MS?OTHER
+            CODE    01E5H     0014H     INBLOCK      ?PR?SERIAL_INIT?MAIN
+            CODE    01F9H     000DH     INBLOCK      ?PR?AD7606_STARTCONVST?AD7076
+            CODE    0206H     000DH     UNIT         ?C_INITSEG
+            CODE    0213H     000CH     INBLOCK      ?PR?AD7606_INIT?AD7076
+            CODE    021FH     000BH     INBLOCK      ?PR?_SERIAL_SEND_STRING?MAIN
+            CODE    022AH     0009H     INBLOCK      ?PR?_AD7606_SETINPUTVOLTAGE?AD7076
+            CODE    0233H     0007H     INBLOCK      ?PR?AD7606_RESET?AD7076
+            CODE    023AH     0007H     INBLOCK      ?PR?_DELAY_US?OTHER
+
+
+
+OVERLAY MAP OF MODULE:   AD7076progrm (AD7076)
+
+
+SEGMENT                                      DATA_GROUP 
+  +--> CALLED SEGMENT                      START    LENGTH
+----------------------------------------------------------
+?C_C51STARTUP                              -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/22/2020  17:18:55  PAGE 2
+
+
+
+?PR?MAIN?MAIN                              0008H    0005H
+  +--> ?PR?SERIAL_INIT?MAIN
+  +--> ?PR?AD7606_INIT?AD7076
+  +--> ?PR?AD7606_STARTCONVST?AD7076
+  +--> ?PR?AD7606_READ_DATA?AD7076
+  +--> ?PR?_SERIAL_SEND_STRING?MAIN
+  +--> ?PR?_DELAY_MS?OTHER
+
+?PR?AD7606_INIT?AD7076                     -----    -----
+  +--> ?PR?_AD7606_SETOS?AD7076
+  +--> ?PR?_AD7606_SETINPUTVOLTAGE?AD7076
+  +--> ?PR?AD7606_RESET?AD7076
+  +--> ?PR?AD7606_STARTCONVST?AD7076
+
+?PR?AD7606_STARTCONVST?AD7076              -----    -----
+  +--> ?PR?_DELAY_US?OTHER
+
+?PR?AD7606_READ_DATA?AD7076                000DH    0010H
+
+
+
+SYMBOL TABLE OF MODULE:  AD7076progrm (AD7076)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        AD7076
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:01F9H         PUBLIC        AD7606_startconvst
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  B:0090H.3       PUBLIC        rage
+  C:0164H         PUBLIC        _AD7606_setOS
+  C:022AH         PUBLIC        _AD7606_setinputvoltage
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  B:0090H.0       PUBLIC        OS0
+  B:0090H.1       PUBLIC        OS1
+  B:0090H.2       PUBLIC        OS2
+  C:01A6H         PUBLIC        AD7606_read_data
+  B:00B0H.6       PUBLIC        cs
+  B:0090H.7       PUBLIC        rd
+  B:0090H.6       PUBLIC        rst
+  C:0233H         PUBLIC        AD7606_reset
+  D:00C8H         PUBLIC        T2CON
+  C:0213H         PUBLIC        AD7606_init
+  B:0090H.4       PUBLIC        convA
+  B:00B0H.7       PUBLIC        convB
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          AD7606_STARTCONVST
+  C:01F9H         LINE#         7
+  C:01F9H         LINE#         8
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/22/2020  17:18:55  PAGE 3
+
+
+  C:01F9H         LINE#         9
+  C:01FBH         LINE#         10
+  C:01FDH         LINE#         11
+  C:0201H         LINE#         12
+  C:0203H         LINE#         13
+  C:0205H         LINE#         14
+  -------         ENDPROC       AD7606_STARTCONVST
+  -------         PROC          AD7606_RESET
+  C:0233H         LINE#         21
+  C:0233H         LINE#         22
+  C:0233H         LINE#         23
+  C:0235H         LINE#         24
+  C:0237H         LINE#         26
+  C:0239H         LINE#         27
+  -------         ENDPROC       AD7606_RESET
+  -------         PROC          _AD7606_SETINPUTVOLTAGE
+  D:0007H         SYMBOL        vol
+  C:022AH         LINE#         35
+  C:022AH         LINE#         36
+  C:022AH         LINE#         37
+  C:022DH         LINE#         38
+  C:022DH         LINE#         39
+  C:022FH         LINE#         40
+  C:0230H         LINE#         41
+  C:0232H         LINE#         42
+  C:0232H         LINE#         43
+  -------         ENDPROC       _AD7606_SETINPUTVOLTAGE
+  -------         PROC          _AD7606_SETOS
+  D:0007H         SYMBOL        uCoS
+  C:0164H         LINE#         49
+  C:0164H         LINE#         50
+  C:0164H         LINE#         51
+  C:017EH         LINE#         52
+  C:017EH         LINE#         53
+  C:017EH         LINE#         54
+  C:0180H         LINE#         55
+  C:0180H         LINE#         56
+  C:0180H         LINE#         57
+  C:0182H         LINE#         58
+  C:0182H         LINE#         59
+  C:0184H         LINE#         60
+  C:0186H         LINE#         61
+  C:0188H         LINE#         62
+  C:0189H         LINE#         63
+  C:0189H         LINE#         64
+  C:018BH         LINE#         65
+  C:018BH         LINE#         66
+  C:018BH         LINE#         67
+  C:018DH         LINE#         68
+  C:018DH         LINE#         69
+  C:018FH         LINE#         70
+  C:0191H         LINE#         71
+  C:0193H         LINE#         72
+  C:0194H         LINE#         73
+  C:0194H         LINE#         74
+  C:0196H         LINE#         75
+  C:0196H         LINE#         76
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/22/2020  17:18:55  PAGE 4
+
+
+  C:0196H         LINE#         77
+  C:0198H         LINE#         78
+  C:0198H         LINE#         79
+  C:019AH         LINE#         80
+  C:019CH         LINE#         81
+  C:019EH         LINE#         82
+  C:019FH         LINE#         83
+  C:019FH         LINE#         84
+  C:01A1H         LINE#         85
+  C:01A3H         LINE#         86
+  C:01A5H         LINE#         87
+  C:01A5H         LINE#         88
+  C:01A5H         LINE#         89
+  C:01A5H         LINE#         90
+  C:01A5H         LINE#         91
+  -------         ENDPROC       _AD7606_SETOS
+  -------         PROC          AD7606_READ_DATA
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:000DH         SYMBOL        DB_data
+  -------         ENDDO         
+  C:01A6H         LINE#         98
+  C:01A6H         LINE#         99
+  C:01A6H         LINE#         103
+  C:01A8H         LINE#         104
+  C:01A8H         LINE#         105
+  C:01AAH         LINE#         106
+  C:01ACH         LINE#         107
+  C:01B4H         LINE#         108
+  C:01BCH         LINE#         109
+  C:01BEH         LINE#         110
+  C:01C0H         LINE#         112
+  C:01C4H         LINE#         113
+  C:01CAH         LINE#         114
+  -------         ENDPROC       AD7606_READ_DATA
+  -------         PROC          AD7606_INIT
+  C:0213H         LINE#         122
+  C:0213H         LINE#         123
+  C:0213H         LINE#         124
+  C:0217H         LINE#         125
+  C:021BH         LINE#         126
+  C:021DH         LINE#         127
+  -------         ENDPROC       AD7606_INIT
+  -------         ENDMOD        AD7076
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  C:021FH         PUBLIC        _serial_send_string
+  D:00A8H         PUBLIC        IE
+  D:001DH         PUBLIC        space
+  D:00B8H         PUBLIC        IP
+  C:01E5H         PUBLIC        serial_init
+  B:0098H.1       PUBLIC        TI
+  C:008FH         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/22/2020  17:18:55  PAGE 5
+
+
+  D:0087H         PUBLIC        PCON
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:0090H.5       PUBLIC        busy
+  D:001FH         PUBLIC        data1
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  D:0021H         PUBLIC        Buffer
+  D:0025H         PUBLIC        sampling
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          SERIAL_INIT
+  C:01E5H         LINE#         78
+  C:01E5H         LINE#         79
+  C:01E5H         LINE#         80
+  C:01E8H         LINE#         81
+  C:01EBH         LINE#         82
+  C:01EBH         LINE#         83
+  C:01EEH         LINE#         84
+  C:01F1H         LINE#         85
+  C:01F4H         LINE#         86
+  C:01F6H         LINE#         87
+  C:01F8H         LINE#         100
+  -------         ENDPROC       SERIAL_INIT
+  -------         PROC          _SERIAL_SEND_STRING
+  D:0007H         SYMBOL        p
+  C:021FH         LINE#         112
+  C:021FH         LINE#         113
+  C:021FH         LINE#         114
+  C:021FH         LINE#         115
+  C:021FH         LINE#         116
+  C:0221H         LINE#         117
+  C:0224H         LINE#         118
+  C:0225H         LINE#         119
+  C:0227H         LINE#         120
+  C:0229H         LINE#         121
+  C:0229H         LINE#         125
+  C:0229H         LINE#         126
+  -------         ENDPROC       _SERIAL_SEND_STRING
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        DB_data
+  D:0006H         SYMBOL        k
+  D:0005H         SYMBOL        tmp
+  D:000BH         SYMBOL        i
+  -------         ENDDO         
+  C:008FH         LINE#         128
+  C:008FH         LINE#         129
+  C:008FH         LINE#         132
+  C:0094H         LINE#         135
+  C:0096H         LINE#         136
+  C:0098H         LINE#         140
+  C:0098H         LINE#         141
+  C:0098H         LINE#         145
+  C:009AH         LINE#         146
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/22/2020  17:18:55  PAGE 6
+
+
+  C:009DH         LINE#         147
+  C:009DH         LINE#         151
+  C:009DH         LINE#         152
+  C:00A5H         LINE#         155
+  C:00A7H         LINE#         156
+  C:00A7H         LINE#         157
+  C:00ACH         LINE#         171
+  C:00B5H         LINE#         172
+  C:00B7H         LINE#         173
+  C:00BAH         LINE#         176
+  C:00C5H         LINE#         177
+  C:00C7H         LINE#         178
+  C:00D3H         LINE#         188
+  C:00DEH         LINE#         189
+  C:00E1H         LINE#         190
+  C:00E6H         LINE#         191
+  C:00EFH         LINE#         192
+  C:0100H         LINE#         193
+  C:0104H         LINE#         208
+  C:010AH         LINE#         209
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        OTHER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:01CBH         PUBLIC        _delay_ms
+  C:023AH         PUBLIC        _delay_us
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        timer
+  -------         DO            
+  D:0005H         SYMBOL        i
+  -------         ENDDO         
+  C:01CBH         LINE#         5
+  C:01CBH         LINE#         6
+  C:01CBH         LINE#         8
+  C:01D5H         LINE#         9
+  C:01D5H         LINE#         10
+  C:01D9H         LINE#         11
+  C:01E4H         LINE#         12
+  C:01E4H         LINE#         13
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          _DELAY_US
+  D:0007H         SYMBOL        timer
+  C:023AH         LINE#         16
+  C:023AH         LINE#         17
+  C:023AH         LINE#         18
+  C:0240H         LINE#         19
+  -------         ENDPROC       _DELAY_US
+  -------         ENDMOD        OTHER
+
+  -------         MODULE        ?C?CLDPTR
+  C:010CH         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+  -------         MODULE        ?C?CLDOPTR
+  C:0125H         PUBLIC        ?C?CLDOPTR
+  -------         ENDMOD        ?C?CLDOPTR
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/22/2020  17:18:55  PAGE 7
+
+
+
+  -------         MODULE        ?C?CSTPTR
+  C:0152H         PUBLIC        ?C?CSTPTR
+  -------         ENDMOD        ?C?CSTPTR
+
+Program Size: data=40.0 xdata=0 code=577
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

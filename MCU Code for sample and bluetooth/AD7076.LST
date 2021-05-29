@@ -1,0 +1,155 @@
+C51 COMPILER V9.52.0.0   AD7076                                                            08/22/2020 17:18:55 PAGE 1   
+
+
+C51 COMPILER V9.52.0.0, COMPILATION OF MODULE AD7076
+OBJECT MODULE PLACED IN AD7076.OBJ
+COMPILER INVOKED BY: G:\51\C51\BIN\C51.EXE AD7076.c ROM(SMALL) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include "AD7076.h"
+   2          
+   3          /*
+   4           * 名称：AD7606_startconvst()
+   5           * 功能：启动转换
+   6           */
+   7          void AD7606_startconvst(void)
+   8          {
+   9   1        convA = 0;
+  10   1        convB = 0;
+  11   1        delay_us(1);
+  12   1        convA = 1;
+  13   1        convB = 1;
+  14   1      }
+  15          
+  16          /*
+  17           * 名称：AD7606_reset()
+  18           * 功能：复位模块
+  19           */
+  20          
+  21          void AD7606_reset(void)
+  22          {
+  23   1        rst = 0;
+  24   1        rst = 1;
+  25   1      //  delay_us(1);
+  26   1        rst = 0;
+  27   1      }
+  28          
+  29          /*
+  30           * 名称：AD7606_setinputvoltage()
+  31           * 功能：设置测试电压范围
+  32           * rage=1为-10V~+10V
+  33           * rage=0位-5V~+5V
+  34           */
+  35          void AD7606_setinputvoltage(uchar vol)
+  36          {
+  37   1        if(vol ==1)
+  38   1        {
+  39   2          rage = 1;
+  40   2        }else{
+  41   2          rage = 0;
+  42   2        }
+  43   1      }
+  44          
+  45          /*
+  46           * 名称：AD7606_setOS()
+  47           * 功能：设置过采样频率
+  48           */
+  49          void AD7606_setOS(uchar uCoS)
+  50          {
+  51   1        switch(uCoS)
+  52   1        {
+  53   2          case sampling_0times:  //无过采样
+  54   2            OS0 = 0;
+  55   2            OS1 = 0;
+C51 COMPILER V9.52.0.0   AD7076                                                            08/22/2020 17:18:55 PAGE 2   
+
+  56   2            OS2 = 0;
+  57   2            break;
+  58   2          case sampling_2times:  //2倍过采样
+  59   2            OS0 = 1;
+  60   2            OS1 = 0;
+  61   2            OS2 = 0;
+  62   2            break;
+  63   2          case sampling_4times:  //4倍过采样
+  64   2            OS0 = 0;
+  65   2            OS1 = 1;
+  66   2            OS2 = 0;
+  67   2            break;
+  68   2          case sampling_8times:  //8倍过采样
+  69   2            OS0 = 1;
+  70   2            OS1 = 1;
+  71   2            OS2 = 0;
+  72   2            break;
+  73   2          case sampling_16times:   //16倍过采样
+  74   2            OS0 = 0;
+  75   2            OS1 = 0;
+  76   2            OS2 = 1;
+  77   2            break;
+  78   2          case sampling_32times:   //32倍过采样
+  79   2            OS0 = 1;
+  80   2            OS1 = 0;
+  81   2            OS2 = 1;
+  82   2            break;
+  83   2          case sampling_64times:   //64倍过采样
+  84   2            OS0 = 0;
+  85   2            OS1 = 1;
+  86   2            OS2 = 1;
+  87   2            break;
+  88   2          default:
+  89   2            break;
+  90   2        }
+  91   1      }
+  92          
+  93          /*
+  94           * 名称：AD7606_read_data()
+  95           * 功能：读取数据
+  96           * 返回值：返回一个结构体指针，该指针为指向结构体数组的首地址
+  97           */
+  98          struct DB_data_struct *AD7606_read_data(void)
+  99          {
+ 100   1        uchar i;
+ 101   1      //  uchar DB_data_H,DB_data_L;
+ 102   1        struct DB_data_struct DB_data[8];  //申请一个结构体数组，用于存储8个通道的16位数据
+ 103   1        for(i=0;i<8;i++)
+ 104   1        {
+ 105   2          rd = 0;
+ 106   2          cs = 0; //在并行模式下，RD和CS同时置低，将使得数据更新在并行总线上
+ 107   2          DB_data[i].DB_data_L = P0;
+ 108   2          DB_data[i].DB_data_H = P2;
+ 109   2          rd = 1;
+ 110   2          cs = 1;
+ 111   2      //    DB_data[i] = (DB_data_H<<8)|DB_data_L;
+ 112   2        }
+ 113   1        return DB_data; 
+ 114   1      }
+ 115          
+ 116          /*
+ 117           * 名称：AD7606_init()
+C51 COMPILER V9.52.0.0   AD7076                                                            08/22/2020 17:18:55 PAGE 3   
+
+ 118           * 功能：初始化AD7606模块
+ 119           *       初始化为无过采样，即采样频率为200ksps,采样电压范围为-5V~+5V
+ 120           */
+ 121          
+ 122          void AD7606_init(void)
+ 123          {
+ 124   1        AD7606_setOS(sampling_32times);
+ 125   1        AD7606_setinputvoltage(0);
+ 126   1        AD7606_reset();
+ 127   1        AD7606_startconvst();
+ 128   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    144    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      16
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
