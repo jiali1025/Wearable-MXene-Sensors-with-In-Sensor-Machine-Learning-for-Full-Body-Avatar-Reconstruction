@@ -11,3 +11,6 @@ The major model training process for the CNN model is done by the CNN_model_trai
 
 
 The major model training process for the LSTM model is done by the LSTM_model_trainging.py and we also have the google colab link as in https://colab.research.google.com/drive/1SKoofZWn82hW6ost1KhroLSt3F91Pxr7?usp=sharing#scrollTo=4aQHrearHzuY
+
+The motion classification process for the ANN model is done by the ANN_sensor_classification.py and we also have the google colab link as in
+https://colab.research.google.com/drive/1YY4BdhhYE6sSNL_A3zg2GegObW35JlQ6
