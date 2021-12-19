@@ -5,3 +5,8 @@ This repo contains the code for analysing the bluetooth data from the whole body
 
 
 After the images are predicted and drawed by our codes, we used https://imgflip.com/gif-maker to create the gif file
+
+
+The major model training process for the CNN model is done by the CNN_model_trainging.py and we also have the google colab link as in https://colab.research.google.com/drive/1Su69f_3Y_L7QD7jItklj3BN8R35NyTr3?usp=sharing
+
+
