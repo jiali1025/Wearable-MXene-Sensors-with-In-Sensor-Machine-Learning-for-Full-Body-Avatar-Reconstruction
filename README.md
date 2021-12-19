@@ -10,3 +10,4 @@ After the images are predicted and drawed by our codes, we used https://imgflip.
 The major model training process for the CNN model is done by the CNN_model_trainging.py and we also have the google colab link as in https://colab.research.google.com/drive/1Su69f_3Y_L7QD7jItklj3BN8R35NyTr3?usp=sharing
 
 
+The major model training process for the LSTM model is done by the LSTM_model_trainging.py and we also have the google colab link as in https://colab.research.google.com/drive/1SKoofZWn82hW6ost1KhroLSt3F91Pxr7?usp=sharing#scrollTo=4aQHrearHzuY
