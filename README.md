@@ -10,4 +10,4 @@ The motion classification process for the ANN model is done by the ANN_sensor_cl
 
 The major model training process for the CNN model is done by the CNN_model_trainging.py and we also have the google colab link as in https://colab.research.google.com/drive/1Su69f_3Y_L7QD7jItklj3BN8R35NyTr3?usp=sharing
 
-
+Supporting files of Tables S2–S6 in the manuscript are in Supporting-Tables folder
